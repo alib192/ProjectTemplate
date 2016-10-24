@@ -63,12 +63,52 @@
             </div>
 
             <!-- The code for the remainder of the personal fields will be added here -->
-
             <div class="form-group">
-              <div class="col-md-4">
-                <input id="btnNext" value="Next" class="btn btn-default btn-sm btn-success" onclick="showCarDetails()" />
-              </div>
-            </div>
+                  <label for="ageInput" class="control-label col-md-2">Age</label>
+                  <div class="col-md-2">
+                    <!-- Numerical input elements set to minimum value of 1 years to remove negatives from being submitted. Maximum value set to 100. -->
+                    <input id="txtAge" type="number" min="1" max="100" name="ageInput" class="form-control personalDetails" placeholder="Your Age" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genderInput" class="control-label col-md-2">Gender</label>
+                  <div class="col-md-2">  
+                    <input id="rdoGenderMale" name="rdoGender" class="personalDetails" type="radio" value="m"> Male
+                    <input id="rdoGenderFemale" name="rdoGender" class="personalDetails" type="radio" value="f"> Female
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="townCityInput" class="control-label col-md-2">Town/City</label>
+                  <div class="col-md-4">
+                    <input id="txtTownCity" type="text" name="townCityInput" class="form-control personalDetails" placeholder="Your Town/City" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="emailInput" class="control-label col-md-2">Email Address</label>
+                  <div class="col-md-4">
+                    <input id="txtEmail" type="email" required name="emailInput" class="form-control personalDetails emailVal" placeholder="Your Email Address" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-2">No Claims Bonus(in years)</label>
+                  <div class="col-md-4">
+                    <select id="ddlNCB" class="form-control">
+                      <option>Select</option>
+                      <option>0</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5+</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-4">
+                  	<!-- btnNext will call showCarDetails() if form is valid -->
+                    <input id="btnNext" value="Next" class="btn btn-default btn-sm btn-success" onclick="showCarDetails()" />
+                  </div>
+                </div>
 
           </form>
         </div>
