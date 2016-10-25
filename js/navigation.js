@@ -20,7 +20,7 @@
     });
   });
 
-
+  //EXERCISE 3 CODE, EXERCISE 7 CODE
   function showCarDetails() {
       
     console.log('showCarDetails...')
@@ -41,6 +41,7 @@
     }
   }
 
+  //EXERCISE 6 CODE
   function showPersonalDetails() {
       // Hide personal details
       $("#dvCarDetails").hide();
@@ -106,26 +107,39 @@
     }
   }
 
-  /*function getQuote() {
+  //EXERCISE 9 CODE
+  function getQuote() {
 
-    // Perform validation to test that all data has been entered
+    console.log('getQuote...')
+    $("#dvCarDetailsAlert").hide();
 
-    if (/* Page is Valid )
+    var emptyFields = validateFields("dvCarDetails");
+
+    if (emptyFields === 0)
     {
+      var gender = $("#dvPersonalDetails input:radio[name=rdoGender]:checked").val();
+      var age = $("#txtAge").val();
+      var yearsNoClaims = $("#ddlNCB option:selected").val();
+      var costOfCar = $("#txtModelEstValue").val();
+      var carStorage = $("#ddlModelStorage option:selected").val();
 
-      // Get the values from the page elements that you need to create your JSON
+      var json = {gender:gender, age:age, noClaimsBonus:yearsNoClaims, costOfCar:costOfCar, carStorage:carStorage};
+      console.log(json);
 
       $.ajax({
           type: "GET",
-          url: "http://localhost:53753/api/rating/CalculateRates",
-          data: { /* create JSON here  }
+          url: "http://lit-wrkexp-01.lit.lmig.com:8080/api/calculateRates",
+          data: json
         }).done(function(msg) {
-          // Put the return value into Label created on quote details
-          // Hide the Car Details section
-          // Display the quote details page
+          $("#txtQuote").text(msg.result.toFixed(2));
+          showQuoteDetails();
       });
     }
-  }*/
+    else
+    {
+      $("#dvCarDetailsAlert").show();
+    }
+  }
 
 //################################# Helper Functions - look at these when validating and changing section #########################################
 

@@ -190,7 +190,7 @@
                   <!-- btnBack will call showPersonalDetails() function, hiding car details div and showing the personal details div -->
                   <input id="btnBack" type="button" value="Back" class="btn btn-success" onclick="showPersonalDetails()" />
                   <!-- btnNext will validate form details and if valid, will make API request, passing form content -->
-                  <input id="btnNext" type="button" value="Get Quote" class="btn btn-success" onclick="showQuoteDetails()" />
+                  <input id="btnNext" type="button" value="Get Quote" class="btn btn-success" onclick="getQuote()" />
                 </div>
               </div>
             </form>
@@ -200,8 +200,43 @@
 
 
       <!-- WRAP Quote DETAILS FORM IN CHILD PANEL -->
+      <!-- EXERCISE 7 CODE -->
       <div id="dvQuoteDetails" class="dvQuoteDetails">
-        <!-- The display fields for the quote will be added here -->
+        <h1>Quote</h1>
+          <p>
+          	Here is the insurance Quote that we can offer you:
+          </p>
+          <div class="row">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-2">Quote Price £</label>
+                <div class="col-md-4">
+                  <label id="txtQuote" class="control-label col-md-2" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-4">
+                  <!-- ONCLICK OF BUTTON, VALIDATE FORM DETAILS AND IF VALID - MAKE API REQUEST, PASSING FORM CONTENT -->
+                  <input id="btnQuoteBack" value="Back" class="btn btn-success" onclick="showCarDetails()" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- END OF EXERCISE 7 CODE -->
+        <!-- End of quote details container -->
+        </section>
+      </div>
+      <!-- End of main page content -->
+
+      <!-- Footer content (LIT contact details) -->
+      <div class="footer">
+        <div class="container">
+          <p class="text-muted"><span class="glyphicon glyphicon-copyright-mark"></span> Insurance Company 2014</p>
+          <p class="text-muted"><span class="glyphicon glyphicon-globe"></span> www.insurance-company.co.uk</p>
+          <p class="text-muted"><span class="glyphicon glyphicon-earphone"></span> 02890 123 456</p>
+        </div>
       </div>
 
 <!--#######################################################################################################################################################
