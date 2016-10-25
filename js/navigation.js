@@ -20,31 +20,97 @@
     });
   });
 
+
   function showCarDetails() {
       
-    // Hide the personal details section (dvPersonalDetails)
-    // Hide the quote section (dvQuoteDetails)
-    // Show the car details section (dvCarDetails)
+    console.log('showCarDetails...')
+    hideErrorAlerts();
 
+    var emptyFields = validateFields("dvPersonalDetails");
+
+    if (emptyFields > 0) {
+      $("#dvPersonalDetailsAlert").show();
+    }
+    else {
+      // Hide personal details
+      $("#dvPersonalDetails").hide();
+      $("#dvQuoteDetails").hide();
+      // Proceed to car details step of process
+      $("#dvCarDetails").show();
+      setActiveNavigation("carLink");
+    }
   }
 
   function showPersonalDetails() {
-      // Hide the car details section (dvCarDetails)
-      // Hide the quote section (dvQuoteDetails)
-      // Show the personal details section (dvPersonalDetails)
+      // Hide personal details
+      $("#dvCarDetails").hide();
+      $("#dvQuoteDetails").hide();
+      hideErrorAlerts();
+
+      // Proceed to car details step of process
+      $("#dvPersonalDetails").show();
+      setActiveNavigation("personalLink");
   }
 
+  //EXERCISE 3 CODE, EXERCISE 5 CODE
+  function validateFields(section) {
+    console.log('validateSection(' + section + ')');
+    var errors = 0;
+    $('#' + section + ' input[type=text]').each(function(){
+      var fieldValue = $(this).val();
+      if (fieldValue === ""){
+        errors++;
+      }
+    });
+     $('#' + section + ' input[type=number]').each(function(){
+      var fieldValue = $(this).val();
+      if (fieldValue === ""){
+        errors++;
+      }
+    });
+     if ($("#" + section + " input:radio").length && $("#" + section + " input:radio").is(':checked') != true)
+      errors++;
+    $('#' + section + ' input[type=email]').each(function(){
+      var fieldValue = $(this).val();
+      if (fieldValue === ""){
+        errors++;
+      }
+    });
+    $('#' + section + ' option:selected').each(function(){
+      var fieldValue = $(this).val();
+      if (fieldValue === "Select"){
+        errors++;
+      }
+    });
+    console.log('errors: ' + errors);  
+    return errors;
+  }
+
+  //EXERCISE 5 CODE
   function showQuoteDetails() {
-      // Hide the car details section (dvCarDetails)
-      // Hide the personal details section (dvQuoteDetails)
-      // Show the quote section (dvPersonalDetails)
+      hideErrorAlerts();
+
+    var emptyFields = validateFields("dvCarDetails");
+
+    if (emptyFields === 0)
+    {
+      $("#dvCarDetails").hide();
+      $("#dvPersonalDetails").hide();
+
+       $("#dvQuoteDetails").show();
+       setActiveNavigation("quoteLink");
+    }
+    else
+    {
+      $("#dvCarDetailsAlert").show();
+    }
   }
 
-  function getQuote() {
+  /*function getQuote() {
 
     // Perform validation to test that all data has been entered
 
-    if (/* Page is Valid */)
+    if (/* Page is Valid )
     {
 
       // Get the values from the page elements that you need to create your JSON
@@ -52,13 +118,14 @@
       $.ajax({
           type: "GET",
           url: "http://localhost:53753/api/rating/CalculateRates",
-          data: { /* create JSON here */ }
+          data: { /* create JSON here  }
         }).done(function(msg) {
           // Put the return value into Label created on quote details
           // Hide the Car Details section
           // Display the quote details page
       });
-  }
+    }
+  }*/
 
 //################################# Helper Functions - look at these when validating and changing section #########################################
 
